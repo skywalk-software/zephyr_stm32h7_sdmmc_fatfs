@@ -1,0 +1,27 @@
+&sdmmc1 {
+        status = "okay";
+        #address-cells = <1>;
+        #size-cells = <1>;
+
+        pinctrl-0 = <&sdmmc1_ck_pc12 &sdmmc1_cmd_pd2 &sdmmc1_d0_pc8
+                     &sdmmc1_d1_pc9 &sdmmc1_d2_pc10 &sdmmc1_d3_pc11>;
+        pinctrl-names = "default";
+};
+
+
+&clk_hsi {
+        status = "okay";
+        hsi-div = <1>;
+};
+&pll {
+        clocks = < &clk_hsi >;
+        div-m = <4>;
+        mul-n = <12>;
+        div-p = <1>;
+        div-q = <4>;
+
+};
+
+&rcc {
+    clock-frequency = <DT_FREQ_M(192)>;
+};
